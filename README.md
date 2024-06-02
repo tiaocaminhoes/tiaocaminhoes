@@ -2164,7 +2164,7 @@ end
 
 
 
-local Library = Update:Window("SUKUNA Hub","",Enum.KeyCode.RightControl);
+local Library = Update:Window("SUKUNA Hub","9614132122",Enum.KeyCode.RightControl);
 
 --local NguyenTien = Library:AddTab("Information","4483345998")
 local Main = Library:AddTab("Main","4483345998")
