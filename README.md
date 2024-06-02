@@ -2164,7 +2164,7 @@ end
 local Library = Update:Window("Dr.Peste","9614132122",Enum.KeyCode.RightControl);
 Main = Library:Tab("General",6026568198)
 Ss = Library:Tab("Auto Stats",7040410130)
-P = Library:Tab("Combat",7251993295)
+
 T = Library:Tab("Teleport",6035190846)
 R = Library:Tab("Dungeon",7044284832)
 S = Library:Tab("Buy Item",6031265976)
@@ -2177,32 +2177,6 @@ Main:Button("Canal DO Produtor",function()
     setclipboard("https://www.youtube.com/channel/UCMhX99w3W24yP7VaDJMlbNQ")
 end)
 
-local Time = Main:Label("Executor Time");spawn(function() getgenv().Time = true;while true do wait(.1) UpdateTime() end end);function UpdateTime() local date = os.date("*t");local hour = (date.hour) % 24;local ampm = hour < 12 and "AM" or "PM";local timezone = string.format("%02i:%02i:%02i %s", ((hour -1) % 12) + 1, date.min, date.sec, ampm);local datetime = string.format("%02d/%02d/%04d", date.day, date.month, date.year);local LocalizationService = game:GetService("LocalizationService");local Players = game:GetService("Players");local player = Players.LocalPlayer;local name = player.Name;local result, code = pcall(function()   return LocalizationService:GetCountryRegionForPlayerAsync(player)  end);Time:Set(" : " .. timezone);Time:Set("Executor Time: " .. datetime .. " [ " .. code .. " ]");spawn(function() if getgenv().Time then pcall(function()  while wait() do  Time()  end end) end end) end
-
-Time = Main:Label("Server Time")
-
-function UpdateTime()
-    local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-    local Hour = math.floor(GameTime/(60^2))%24
-    local Minute = math.floor(GameTime/(60^1))%60
-    local Second = math.floor(GameTime/(60^0))%60
-    Time:Set("Hour : "..Hour.." Minute : "..Minute.." Second : "..Second)
-end
-
-spawn(function()
-    while true do
-        UpdateTime()
-        wait()
-    end
-end)
-
-Client = Main:Label("FPS Server")
-
-function UpdateClient()
-    local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-    local Fps = workspace:GetRealPhysicsFPS()
-    Client:Set("Fps : "..Fps.." Ping : "..Ping)
-end
 
 	
 --FN
